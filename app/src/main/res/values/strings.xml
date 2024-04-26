@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">careconnect</string>
+    <string name="user_name">name</string>
     <string name="bienvenido">Bienvenido a CareConnect</string>
     <string name="log_in">Log In</string>
+    <string name="Join">Join</string>
     <string name="sign_up">Sign Up</string>
     <string name="profesional">Profesional de la salud</string>
     <string name="paciente">Paciente</string>
     <string name="email">Correo Electrónico</string>
     <string name="contrase_a">Contraseña</string>
+    <string name="Confcontrase_a">Confirmar Contraseña</string>
     <string name="careconnect">CareConnect</string>
+    <string name="TvhaveAccount">¿Tienes una cuenta?</string>
+    <string name="TvredirLog_in">Log in</string>
 </resources>

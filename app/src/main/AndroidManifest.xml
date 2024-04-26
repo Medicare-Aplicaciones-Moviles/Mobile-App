@@ -19,6 +19,12 @@
             android:name=".RolCuentaActivity"
             android:exported="false" />
         <activity
+            android:name=".RolInteractivityRegister"
+            android:exported="false" />
+        <activity
+            android:name=".IngresarDatosRegistro"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
