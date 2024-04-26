@@ -28,10 +28,11 @@ class IngresarDatosRegistro : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.ibBack)
 
         btnBack.setOnClickListener {
-            val intent = Intent(this, RolCuentaActivity::class.java)
+            val intent = Intent(this, RolInteractivityRegister::class.java)
             startActivity(intent)
         }
 
+        //Opcion Log in
         val tvLogin = findViewById<TextView>(R.id.TvredirLog_in)
 
         tvLogin.setOnClickListener {
