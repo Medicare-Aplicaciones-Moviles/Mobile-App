@@ -28,7 +28,7 @@ class IngresarDatosRegistro : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.ibBack)
 
         btnBack.setOnClickListener {
-            val intent = Intent(this, RolCuentaActivity::class.java)
+            val intent = Intent(this, RolInteractivityRegister::class.java)
             startActivity(intent)
         }
 
