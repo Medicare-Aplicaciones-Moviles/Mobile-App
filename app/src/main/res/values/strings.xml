@@ -13,4 +13,5 @@
     <string name="careconnect">CareConnect</string>
     <string name="TvhaveAccount">¿Tienes una cuenta?</string>
     <string name="TvredirLog_in">Log in</string>
+    <string name="no_cuenta">¿No tienes una cuenta?</string>
 </resources>

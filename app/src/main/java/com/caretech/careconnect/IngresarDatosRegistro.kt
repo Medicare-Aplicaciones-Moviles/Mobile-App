@@ -32,6 +32,7 @@ class IngresarDatosRegistro : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Opcion Log in
         val tvLogin = findViewById<TextView>(R.id.TvredirLog_in)
 
         tvLogin.setOnClickListener {

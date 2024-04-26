@@ -6,6 +6,7 @@ import android.text.InputType
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,6 +32,13 @@ class IngresarDatosLogin : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //Opcion Join
+        val tvJoin = findViewById<TextView>(R.id.tvJoin)
+
+        tvJoin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 }
