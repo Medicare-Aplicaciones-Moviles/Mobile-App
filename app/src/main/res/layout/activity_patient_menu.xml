@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF9F9"
@@ -11,12 +12,10 @@
         android:id="@+id/toolbarPaciente"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="605dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="#2187B5"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toTopOf="@+id/toolbarOpciones"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -216,22 +215,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
+        android:contentDescription="@string/HistorialMedico"
         app:layout_constraintEnd_toEndOf="@+id/btHMedico"
         app:layout_constraintStart_toStartOf="@+id/btHMedico"
         app:layout_constraintTop_toTopOf="@+id/btHMedico"
-        app:srcCompat="@drawable/icono_historial_medico"
-        android:contentDescription="@string/HistorialMedico" />
+        app:srcCompat="@drawable/icono_historial_medico" />
 
     <ImageView
         android:id="@+id/ivSacarCita"
         android:layout_width="72dp"
         android:layout_height="62dp"
         android:layout_marginTop="30dp"
+        android:contentDescription="@string/SacarCita"
         app:layout_constraintEnd_toEndOf="@+id/btSacarCita"
         app:layout_constraintStart_toStartOf="@+id/btSacarCita"
         app:layout_constraintTop_toTopOf="@+id/btSacarCita"
-        app:srcCompat="@drawable/icono_sacar_cita"
-        android:contentDescription="@string/SacarCita" />
+        app:srcCompat="@drawable/icono_sacar_cita" />
 
     <ImageButton
         android:id="@+id/ibMenuTresRayas"
@@ -243,6 +242,7 @@
         android:backgroundTint="#2187B5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/menu__1_" />
+        app:srcCompat="@drawable/menu__1_"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
