@@ -33,11 +33,11 @@ class IngresarDatosLogin : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Opcion Join
-        val tvJoin = findViewById<TextView>(R.id.tvJoin)
+        //Opcion tvNoAccount
+        val tvNoAccount = findViewById<TextView>(R.id.tvNoAccount)
 
-        tvJoin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        tvNoAccount.setOnClickListener {
+            val intent = Intent(this, IngresarDatosRegistro::class.java)
             startActivity(intent)
         }
 

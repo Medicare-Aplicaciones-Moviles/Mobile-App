@@ -1,5 +1,6 @@
 package com.caretech.careconnect
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -7,43 +8,28 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.Historial.Alergia
 
-class MainActivity : AppCompatActivity() {
-
-    val alergias =ArrayList<Alergia>()
+class HistorialMedicoActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_historial_medico)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        //Boton Sign Up
-        val btnSingUp = findViewById<Button>(R.id.btSignUp)
 
-        btnSingUp.setOnClickListener {
-            val intent = Intent(this, RolInteractivityRegister::class.java)
-            startActivity(intent)
-        }
+        val btAdjuntar = findViewById<Button>(R.id.btAdjuntar)
 
-        //Boton login
-        val btnLogin = findViewById<Button>(R.id.btLogIn)
-
-        btnLogin.setOnClickListener {
-            val intent = Intent(this, RolCuentaActivity::class.java)
+        btAdjuntar.setOnClickListener{
+            val intent = Intent(this, HistorialMedicoResumenActivity::class.java)
             startActivity(intent)
         }
 
 
     }
-
-
-
-
-
 
 }

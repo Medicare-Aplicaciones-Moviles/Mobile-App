@@ -40,4 +40,21 @@
     <string name="cerrarSesion">Cerrar sesión</string>
     <string name="photo">TODO</string>
     <string name="imgRestablecerContra">TODO</string>
+    <string name="tvfechapacientehistorial">tvFechaPacienteHistorial</string>
+    <string name="actualizar_informacion_historial">Actualizar Información</string>
+    <string name="aviso_historial">El historial medico aun no se ha ingresado a la plataforma</string>
+    <string name="adjuntar_historial">Adjuntar Historial</string>
+    <string name="tvnombrepaciente">tvNombrePaciente</string>
+    <string name="guardarHistorialResumen">Guardar</string>
+    <string name="alergiasSrcImage">Alergias</string>
+    <string name="antecedentesSrcImage">Antecedentes</string>
+    <string name="alturaHistorial">Altura:</string>
+    <string name="alturaHistorialResumen">1.72 m</string>
+    <string name="masaCorporalHistorialResumen">55 Kg</string>
+    <string name="masaCorporalHistorial">Masa Corporal:</string>
+    <string name="pesoHistorialResumen">55 Kg</string>
+    <string name="pesoHistorial">Peso:</string>
+    <string name="infogeneralSrcImage">InfoGeneral</string>
+    <string name="photoHistorialSrcImage">Photo</string>
+    <string name="settingsSrcImage">Settings</string>
 </resources>
