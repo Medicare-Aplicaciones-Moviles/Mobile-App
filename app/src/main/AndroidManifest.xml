@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Careconnect"
         tools:targetApi="31">
         <activity
+            android:name=".CitaMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistorialMedicoResumenActivity"
+            android:exported="false" />
+        <activity
             android:name=".PatientEditPersonalInformationActivity"
             android:exported="false" />
         <activity
@@ -32,6 +38,9 @@
             android:exported="false" />
         <activity
             android:name=".IngresarDatosRegistro"
+            android:exported="false" />
+        <activity
+            android:name=".HistorialMedicoActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
