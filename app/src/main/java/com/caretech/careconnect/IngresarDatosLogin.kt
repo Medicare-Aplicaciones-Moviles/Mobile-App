@@ -2,16 +2,13 @@ package com.caretech.careconnect
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.textfield.TextInputEditText
 
 class IngresarDatosLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,11 +29,19 @@ class IngresarDatosLogin : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Opcion Join
-        val tvJoin = findViewById<TextView>(R.id.tvJoin)
+        //Opcion tvNoAccount
+        val tvNoAccount = findViewById<TextView>(R.id.tvNoAccount)
 
-        tvJoin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+        tvNoAccount.setOnClickListener {
+            val intent = Intent(this, IngresarDatosRegistro::class.java)
+            startActivity(intent)
+        }
+
+        //Opcion Login
+        val btnLogin = findViewById<Button>(R.id.btLog)
+
+        btnLogin.setOnClickListener {
+            val intent = Intent(this, PatientMenuActivity::class.java)
             startActivity(intent)
         }
 

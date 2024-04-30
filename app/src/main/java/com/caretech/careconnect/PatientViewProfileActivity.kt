@@ -1,49 +1,41 @@
 package com.caretech.careconnect
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.Historial.Alergia
 
-class MainActivity : AppCompatActivity() {
-
-    val alergias =ArrayList<Alergia>()
+class PatientViewProfileActivity : AppCompatActivity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_patient_view_profile)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        //Boton Sign Up
-        val btnSingUp = findViewById<Button>(R.id.btSignUp)
+        //BtnLeerInfoPersonal
+        val btnLeerInfoPersonal = findViewById<Button>(R.id.btLeerInfoPersonal)
 
-        btnSingUp.setOnClickListener {
-            val intent = Intent(this, RolInteractivityRegister::class.java)
+        btnLeerInfoPersonal.setOnClickListener {
+            val intent = Intent(this, PatientEditPersonalInformationActivity::class.java)
             startActivity(intent)
         }
 
-        //Boton login
-        val btnLogin = findViewById<Button>(R.id.btLogIn)
+        //BotonBack
+        val btnBack = findViewById<ImageButton>(R.id.ibBackWhite)
 
-        btnLogin.setOnClickListener {
-            val intent = Intent(this, RolCuentaActivity::class.java)
+        btnBack.setOnClickListener {
+            val intent = Intent(this, PatientMenuActivity::class.java)
             startActivity(intent)
         }
-
-
     }
-
-
-
-
-
-
 }
