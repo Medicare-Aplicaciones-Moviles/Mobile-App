@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textfield.TextInputEditText
 
 class PagoCitaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +26,19 @@ class PagoCitaActivity : AppCompatActivity() {
             val intent = Intent(this, PagoRealizadoActivity::class.java)
             startActivity(intent)
         }
+
+        val etTitular = findViewById<TextInputEditText>(R.id.etTitular)
+        val etTarjeta = findViewById<TextInputEditText>(R.id.etTarjeta)
+        val etVencimiento = findViewById<TextInputEditText>(R.id.etVencimiento)
+        val etCVV = findViewById<TextInputEditText>(R.id.etCvv)
+
+
+        //capturar los datos de los campos de texto
+        val titular = etTitular.text.toString()
+        val tarjeta = etTarjeta.text.toString()
+        val vencimiento = etVencimiento.text.toString()
+        val cvv = etCVV.text.toString()
+
+
     }
 }

@@ -194,10 +194,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView2" />
+        app:layout_constraintTop_toBottomOf="@+id/cvFecha" />
 
     <CalendarView
-        android:id="@+id/calendarView2"
+        android:id="@+id/cvFecha"
         android:layout_width="wrap_content"
         android:layout_height="208dp"
         android:layout_marginStart="5dp"
@@ -209,7 +209,7 @@
 
 
     <TimePicker
-        android:id="@+id/timePicker1"
+        android:id="@+id/tpHorario"
         android:layout_width="251dp"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
@@ -234,6 +234,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker1" />
+        app:layout_constraintTop_toBottomOf="@+id/tpHorario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

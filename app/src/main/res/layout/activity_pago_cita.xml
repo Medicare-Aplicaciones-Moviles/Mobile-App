@@ -192,13 +192,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCvv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="XXX" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvMonto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -211,7 +212,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout7" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -221,7 +222,7 @@
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMonto" />
 
     <Button
         android:id="@+id/btConfirmar"
@@ -236,6 +237,6 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPrecio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

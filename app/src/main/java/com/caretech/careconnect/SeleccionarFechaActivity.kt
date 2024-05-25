@@ -3,6 +3,8 @@ package com.caretech.careconnect
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CalendarView
+import android.widget.TimePicker
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,6 +27,20 @@ class SeleccionarFechaActivity : AppCompatActivity() {
             val intent = Intent(this, PagoCitaActivity::class.java)
             startActivity(intent)
         }
+
+        val cvFecha = findViewById<CalendarView>(R.id.cvFecha)
+        val tpHorario = findViewById<TimePicker>(R.id.tpHorario)
+
+        //capturar la fecha seleccionada
+        cvFecha.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            val fecha = "$dayOfMonth/$month/$year"
+        }
+
+        //capturar la hora seleccionada
+        tpHorario.setOnTimeChangedListener { view, hourOfDay, minute ->
+            val hora = "$hourOfDay:$minute"
+        }
+
 
 
     }
