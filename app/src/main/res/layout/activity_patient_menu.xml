@@ -9,7 +9,7 @@
     android:backgroundTint="#E1E1E1">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPaciente"
+        android:id="@+id/toolbarDoctor"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -30,8 +30,8 @@
         android:textColor="#F6F0F0"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toolbarPaciente"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente" />
+        app:layout_constraintEnd_toStartOf="@+id/toolbarDoctor"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarOpciones"
@@ -58,7 +58,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor" />
 
     <ImageButton
         android:id="@+id/ibInicio"
@@ -163,7 +163,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvBienvenida" />
 
     <Button
-        android:id="@+id/btHMedico"
+        android:id="@+id/btHistorial_Medico"
         android:layout_width="145dp"
         android:layout_height="167dp"
         android:layout_marginStart="47dp"
@@ -176,27 +176,27 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/tvHMedico"
+        android:id="@+id/tvHistorial_Medico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Historial Médico"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/btHMedico"
-        app:layout_constraintStart_toStartOf="@+id/btHMedico"
-        app:layout_constraintTop_toBottomOf="@+id/ivHMedico" />
+        app:layout_constraintEnd_toEndOf="@+id/btHistorial_Medico"
+        app:layout_constraintStart_toStartOf="@+id/btHistorial_Medico"
+        app:layout_constraintTop_toBottomOf="@+id/ivHistorial_Medico" />
 
     <Button
         android:id="@+id/btSacarCita"
         android:layout_width="144dp"
         android:layout_height="167dp"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="47dp"
         android:backgroundTint="#FFFBFB"
         android:text="@string/btSacarCita"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btHMedico"
+        app:layout_constraintStart_toEndOf="@+id/btHistorial_Medico"
         app:layout_constraintTop_toBottomOf="@+id/tvBienvenida2" />
 
     <TextView
@@ -211,14 +211,14 @@
         app:layout_constraintTop_toBottomOf="@+id/ivSacarCita" />
 
     <ImageView
-        android:id="@+id/ivHMedico"
+        android:id="@+id/ivHistorial_Medico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:contentDescription="@string/HistorialMedico"
-        app:layout_constraintEnd_toEndOf="@+id/btHMedico"
-        app:layout_constraintStart_toStartOf="@+id/btHMedico"
-        app:layout_constraintTop_toTopOf="@+id/btHMedico"
+        app:layout_constraintEnd_toEndOf="@+id/btHistorial_Medico"
+        app:layout_constraintStart_toStartOf="@+id/btHistorial_Medico"
+        app:layout_constraintTop_toTopOf="@+id/btHistorial_Medico"
         app:srcCompat="@drawable/icono_historial_medico" />
 
     <ImageView

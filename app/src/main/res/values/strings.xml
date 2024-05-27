@@ -15,7 +15,9 @@
     <string name="TvredirLog_in">Log in</string>
     <string name="no_cuenta">¿No tienes una cuenta?</string>
     <string name="sacar_cita">Sacar Cita</string>
+    <string name="agenda">Agenda</string>
     <string name="SacarCita">TODO</string>
+    <string name="Ingresos_Pagos">Ingresos y Pagos</string>
     <string name="HistorialMedico">TODO</string>
     <string name="btSacarCita">Button</string>
     <string name="que_necesitas">¿Qué necesitas?</string>

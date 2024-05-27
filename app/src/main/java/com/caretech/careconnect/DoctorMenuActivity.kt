@@ -10,12 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class PatientMenuActivity : AppCompatActivity() {
+class DoctorMenuActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_patient_menu)
+        setContentView(R.layout.activity_doctor_menu)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -29,17 +29,26 @@ class PatientMenuActivity : AppCompatActivity() {
             val intent = Intent(this, PatientViewProfileActivity::class.java)
             startActivity(intent)
         }
+        //BtnAgenda
+        //FALTA PANTALLA DE AGENDA
+        val btAgenda = findViewById<Button>(R.id.btAgenda)
 
-        val btHMedico = findViewById<Button>(R.id.btHistorial_Medico)
-
-        btHMedico.setOnClickListener{
+        btAgenda.setOnClickListener{
             val intent = Intent(this, HistorialMedicoActivity::class.java)
             startActivity(intent)
         }
+        //BtnPatient
+        val btPatient = findViewById<Button>(R.id.btPatient)
 
-        val btSacarCita = findViewById<Button>(R.id.btSacarCita)
+        btPatient.setOnClickListener{
+            val intent = Intent(this, CitaMenuActivity::class.java)
+            startActivity(intent)
+        }
+        //BtnIngresos_Costos
+        //FALTA PANTALLA DE INGRESOS Y COSTOS
+        val btIngresos_Pagos = findViewById<Button>(R.id.btIngresos_Pagos)
 
-        btSacarCita.setOnClickListener{
+        btIngresos_Pagos.setOnClickListener{
             val intent = Intent(this, CitaMenuActivity::class.java)
             startActivity(intent)
         }

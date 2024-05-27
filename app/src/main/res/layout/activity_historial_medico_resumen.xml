@@ -9,7 +9,7 @@
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPaciente"
+        android:id="@+id/toolbarDoctor"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="605dp"
@@ -34,8 +34,8 @@
         android:textColor="#F6F0F0"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toolbarPaciente"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente" />
+        app:layout_constraintEnd_toStartOf="@+id/toolbarDoctor"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarOpciones"
@@ -164,7 +164,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -174,7 +174,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor"
         app:srcCompat="@drawable/anciano__1_"
         android:contentDescription="@string/photoHistorialSrcImage" />
 
@@ -227,7 +227,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor"
         app:srcCompat="@drawable/historial_info_general"
         android:contentDescription="@string/infogeneralSrcImage" />
 
@@ -256,7 +256,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor"
         app:layout_constraintVertical_bias="0.429"
         tools:ignore="SmallSp" />
 
@@ -347,7 +347,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor"
         app:layout_constraintVertical_bias="0.555"
         app:srcCompat="@drawable/historial_alergias"
         android:contentDescription="@string/alergiasSrcImage" />
@@ -374,7 +374,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor"
         app:layout_constraintVertical_bias="0.578" />
 
     <Button

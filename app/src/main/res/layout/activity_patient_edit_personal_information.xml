@@ -9,7 +9,7 @@
     android:backgroundTint="#E1E1E1">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPaciente"
+        android:id="@+id/toolbarDoctor"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -29,9 +29,9 @@
         android:textColor="#F6F0F0"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/toolbarPaciente"
-        app:layout_constraintStart_toStartOf="@+id/toolbarPaciente"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente" />
+        app:layout_constraintEnd_toEndOf="@+id/toolbarDoctor"
+        app:layout_constraintStart_toStartOf="@+id/toolbarDoctor"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarOpciones"
@@ -163,7 +163,7 @@
         android:layout_marginTop="20dp"
         android:background="#2187B5"
         android:importantForAccessibility="no"
-        app:layout_constraintStart_toStartOf="@+id/toolbarPaciente"
+        app:layout_constraintStart_toStartOf="@+id/toolbarDoctor"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_white"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -177,7 +177,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
@@ -190,7 +190,7 @@
         android:textAlignment="viewStart"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivPhotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor"
         tools:ignore="TextSizeCheck" />
 
     <ImageView
@@ -239,7 +239,7 @@
         android:background="#AFB7BD"
         android:importantForAccessibility="no"
         app:layout_constraintStart_toEndOf="@+id/tvNombre"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor"
         app:srcCompat="@android:drawable/ic_menu_edit"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,ImageContrastCheck" />
 

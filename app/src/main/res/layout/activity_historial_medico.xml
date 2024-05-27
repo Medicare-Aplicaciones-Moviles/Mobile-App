@@ -16,12 +16,12 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor"
         app:srcCompat="@drawable/anciano__1_" />
 
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPaciente"
+        android:id="@+id/toolbarDoctor"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="605dp"
@@ -46,8 +46,8 @@
         android:textColor="#F6F0F0"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toolbarPaciente"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente" />
+        app:layout_constraintEnd_toStartOf="@+id/toolbarDoctor"
+        app:layout_constraintTop_toTopOf="@+id/toolbarDoctor" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarOpciones"
@@ -175,7 +175,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarDoctor" />
 
     <TextView
         android:id="@+id/tvFechaPacienteHistorialResumen"

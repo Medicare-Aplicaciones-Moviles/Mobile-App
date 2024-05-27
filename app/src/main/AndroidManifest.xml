@@ -43,6 +43,9 @@
             android:name=".HistorialMedicoActivity"
             android:exported="false" />
         <activity
+            android:name=".DoctorMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
