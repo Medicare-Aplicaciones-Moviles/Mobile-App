@@ -30,15 +30,15 @@ class PatientMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //BtnHistorialMedico
         val btHMedico = findViewById<Button>(R.id.btHMedico)
-
         btHMedico.setOnClickListener{
             val intent = Intent(this, HistorialMedicoActivity::class.java)
             startActivity(intent)
         }
 
+        //BtnSacarCita
         val btSacarCita = findViewById<Button>(R.id.btSacarCita)
-
         btSacarCita.setOnClickListener{
             val intent = Intent(this, CitaMenuActivity::class.java)
             startActivity(intent)

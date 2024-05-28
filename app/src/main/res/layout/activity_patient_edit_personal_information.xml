@@ -170,8 +170,8 @@
 
     <Button
         android:id="@+id/btInfoGeneralEnPerfil"
-        android:layout_width="340dp"
-        android:layout_height="144dp"
+        android:layout_width="358dp"
+        android:layout_height="185dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#FAF6F6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,81 +180,44 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="105dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/NombreEjemplo"
-        android:textAlignment="viewStart"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ivPhotoPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
-        tools:ignore="TextSizeCheck" />
-
     <ImageView
         android:id="@+id/ivFecha"
         android:layout_width="25dp"
         android:layout_height="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:background="#AFB7BD"
         android:importantForAccessibility="no"
-        app:layout_constraintEnd_toStartOf="@+id/tvFecha"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
+        app:layout_constraintStart_toEndOf="@+id/ibFotoEdit"
+        app:layout_constraintTop_toTopOf="@+id/etDate"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        tools:ignore="ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/tvFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="115dp"
-        android:text="@string/fechaEjemplo"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/btInfoGeneralEnPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
-        tools:ignore="SmallSp" />
-
-    <TextView
-        android:id="@+id/tvTelefono"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="122dp"
-        android:text="@string/numeroEjemplo"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/btInfoGeneralEnPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/tvFecha"
-        tools:ignore="SmallSp" />
+        tools:ignore="ImageContrastCheck,MissingConstraints" />
 
     <ImageButton
         android:id="@+id/ibEdit"
         android:layout_width="24dp"
         android:layout_height="34dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="32dp"
         android:background="#AFB7BD"
         android:importantForAccessibility="no"
-        app:layout_constraintStart_toEndOf="@+id/tvNombre"
+        app:layout_constraintEnd_toEndOf="@+id/btInfoGeneralEnPerfil"
         app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
         app:srcCompat="@android:drawable/ic_menu_edit"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck,MissingConstraints,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/ivTelefono"
         android:layout_width="26dp"
         android:layout_height="18dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
         android:background="#AFB7BD"
         android:importantForAccessibility="no"
-        app:layout_constraintEnd_toStartOf="@+id/tvTelefono"
+        app:layout_constraintStart_toEndOf="@+id/ibFotoEdit"
         app:layout_constraintTop_toBottomOf="@+id/ivFecha"
         app:srcCompat="@android:drawable/ic_menu_call"
-        tools:ignore="ImageContrastCheck" />
+        tools:ignore="ImageContrastCheck,MissingConstraints" />
 
     <Button
         android:id="@+id/btActualizar"
@@ -264,81 +227,117 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="36dp"
         android:backgroundTint="#B32C2C"
-        android:text="Actualizar"
+        android:text="@string/actualizar"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tietPeso" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="285dp">
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="381dp">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/etPeso" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tietAltura"
+        android:id="@+id/etAltura"
         android:layout_width="340dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="36dp"
-        android:hint="Altura"
+        android:hint="@string/altura"
         android:textAlignment="center"
+        android:textColorHint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btInfoGeneralEnPerfil" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tietMasaCorporal"
+        android:id="@+id/etMasaCorporal"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="36dp"
         android:hint="Masa Corporal"
+        android:minHeight="48dp"
         android:textAlignment="center"
+        android:textColorHint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tietAltura" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="449dp">
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/etAltura" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/tietPeso"
+        android:id="@+id/etPeso"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:hint="Peso"
+        android:minHeight="48dp"
         android:textAlignment="center"
+        android:textColorHint="#616161"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tietMasaCorporal" />
+        app:layout_constraintTop_toBottomOf="@+id/etMasaCorporal" />
 
-    <ImageView
-        android:id="@+id/ivPhotoPerfil"
-        android:layout_width="75dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@+id/btInfoGeneralEnPerfil"
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="97dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="-5dp"
+        android:ems="10"
+        android:hint="@string/fechaEjemplo"
+        android:inputType="date"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/ivFecha"
+        app:layout_constraintTop_toBottomOf="@+id/etApellido"
+        tools:ignore="SmallSp" />
+
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="97dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:hint="@string/numeroEjemplo"
+        android:inputType="number"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/ivTelefono"
+        app:layout_constraintTop_toTopOf="@+id/etDate" />
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/nombre"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/ibFotoEdit"
         app:layout_constraintTop_toTopOf="@+id/btInfoGeneralEnPerfil"
-        app:srcCompat="@drawable/anciano__1_" />
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/etApellido"
+        android:layout_width="129dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="@string/apellido"
+        android:inputType="textPersonName"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/ibFotoEdit"
+        app:layout_constraintTop_toBottomOf="@+id/etNombre"
+        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/ibFotoEdit"
+        android:layout_width="97dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/btInfoGeneralEnPerfil"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
