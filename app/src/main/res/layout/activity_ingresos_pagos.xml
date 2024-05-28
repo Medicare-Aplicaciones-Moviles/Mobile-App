@@ -28,13 +28,13 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="-235dp"
-        android:text="@string/menu"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="130dp"
+        android:text="@string/ingresos_pagos"
         android:textColor="#F6F0F0"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/toolbarPaciente"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarPaciente"
         app:layout_constraintTop_toTopOf="@+id/toolbarPaciente" />
 
     <androidx.appcompat.widget.Toolbar
@@ -142,8 +142,8 @@
 
     <ImageButton
         android:id="@+id/ibMenuTresRayas"
-        android:layout_width="60dp"
-        android:layout_height="49dp"
+        android:layout_width="62dp"
+        android:layout_height="51dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:background="#F4ECEC"
@@ -156,11 +156,10 @@
 
     <ImageButton
         android:id="@+id/ibBackHistorialResumen"
-
-        android:layout_width="48dp"
+        android:layout_width="51dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="356dp"
+        android:layout_marginEnd="360dp"
         android:background="#F4ECEC"
         android:backgroundTint="#2187B5"
         android:importantForAccessibility="no"
@@ -168,120 +167,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_white" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="263dp"
-        android:layout_height="54dp"
-        android:text="Filtrar"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarOpciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.222" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout5"
-        android:layout_width="355dp"
-        android:layout_height="49dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarOpciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.137">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="355dp"
-            android:layout_height="42dp"
-            android:hint="Nombre de Doctor" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="231dp"
-        android:layout_height="107dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354"
-        app:srcCompat="@drawable/cita_formato_card" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="78dp"
-        android:layout_height="77dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarOpciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.132"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.356"
-        app:srcCompat="@drawable/cita_doctor_2" />
-
     <TextView
-        android:id="@+id/tvNombreDoctorCita"
-        android:layout_width="101dp"
-        android:layout_height="33dp"
-        android:text="Juan Fernando Peréz del Corral"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.425"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.333" />
-
-    <TextView
-        android:id="@+id/tvDoctorOficioCita"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Psiquiatra"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.359"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <TextView
-        android:id="@+id/tvPrecioDoctorCita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="S/ 75.00"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="21dp"
+        android:text="Lista"
+        android:textColor="#000000"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente" />
 
-    <TextView
-        android:id="@+id/tvRatingDoctorCita"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="4.5"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/toolbarOpciones"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.408" />
-
-    <ImageView
-        android:id="@+id/ivSacarCitaButton"
-        android:layout_width="115dp"
-        android:layout_height="102dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbarOpciones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarPaciente"
-        app:layout_constraintVertical_bias="0.351"
-        app:srcCompat="@drawable/sacar_cita_button" />
-
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

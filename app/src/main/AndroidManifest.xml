@@ -40,6 +40,9 @@
             android:name=".IngresarDatosRegistro"
             android:exported="false" />
         <activity
+            android:name=".IngresosPagosActivity"
+            android:exported="false" />
+        <activity
             android:name=".HistorialMedicoActivity"
             android:exported="false" />
         <activity
