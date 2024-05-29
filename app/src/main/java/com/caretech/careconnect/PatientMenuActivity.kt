@@ -40,7 +40,7 @@ class PatientMenuActivity : AppCompatActivity() {
         //BtnSacarCita
         val btSacarCita = findViewById<Button>(R.id.btSacarCita)
         btSacarCita.setOnClickListener{
-            val intent = Intent(this, CitaMenuActivity::class.java)
+            val intent = Intent(this, DoctorsCitaActivity::class.java)
             startActivity(intent)
         }
     }

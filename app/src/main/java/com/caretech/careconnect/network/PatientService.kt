@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface PatientService {
     @GET("patient-controller")
-    fun getAllPatients(@Query("fetchAll") fetchAll: String): Call<List<Patient>>
+    fun searchPatient(@Query("fetchAll") fetchAll: String): Call<List<Patient>>
 
     @GET("patient-controller")
     fun getPatientById(@Query("fetchById") fetchById: String): Call<Patient>
