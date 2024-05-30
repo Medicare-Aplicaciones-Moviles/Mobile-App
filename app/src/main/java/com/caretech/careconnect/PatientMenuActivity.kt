@@ -9,10 +9,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.caretech.careconnect.User.Doctor
+import com.caretech.careconnect.User.Patient
 
 class PatientMenuActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val doctor = intent.getSerializableExtra("doctor") as? Doctor
+        val patient = intent.getSerializableExtra("patient") as? Patient
+        val number = 13
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_patient_menu)
@@ -27,6 +34,12 @@ class PatientMenuActivity : AppCompatActivity() {
 
         btnPerfil.setOnClickListener {
             val intent = Intent(this, PatientViewProfileActivity::class.java)
+            if(doctor != null){
+                intent.putExtra("doctor", doctor as Doctor)
+            }
+            if(patient != null){
+                intent.putExtra("patient", patient as Patient)
+            }
             startActivity(intent)
         }
 
@@ -34,6 +47,13 @@ class PatientMenuActivity : AppCompatActivity() {
 
         btHMedico.setOnClickListener{
             val intent = Intent(this, HistorialMedicoActivity::class.java)
+            if(doctor != null){
+                intent.putExtra("doctor", doctor as Doctor)
+            }
+            if(patient != null){
+                intent.putExtra("patient", patient as Patient)
+            }
+
             startActivity(intent)
         }
 
@@ -41,6 +61,12 @@ class PatientMenuActivity : AppCompatActivity() {
 
         btSacarCita.setOnClickListener{
             val intent = Intent(this, CitaMenuActivity::class.java)
+            if (doctor != null) {
+                intent.putExtra("doctor", doctor as Doctor)
+            }
+            if (patient != null) {
+                intent.putExtra("patient", patient as Patient)
+            }
             startActivity(intent)
         }
     }

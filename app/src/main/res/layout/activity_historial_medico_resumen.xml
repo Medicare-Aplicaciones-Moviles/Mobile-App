@@ -188,10 +188,10 @@
         android:textColor="#0093AB"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFechaPacienteHistorialResumen" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEdad" />
 
     <TextView
-        android:id="@+id/tvFechaPacienteHistorialResumen"
+        android:id="@+id/tvEdad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
