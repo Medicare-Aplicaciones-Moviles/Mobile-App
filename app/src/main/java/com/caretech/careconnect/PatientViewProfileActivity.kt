@@ -3,30 +3,29 @@ package com.caretech.careconnect
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.User.Patient
-
-
+import com.bumptech.glide.Glide
+import com.caretech.careconnect.models.Patient
+import com.caretech.careconnect.network.PatientService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class PatientViewProfileActivity : AppCompatActivity() {
-    companion object {
-        const val REQUEST_CODE_UPDATE_PATIENT  = 1
-    }
-
-    private var patient: Patient? = null
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        patient = intent.getSerializableExtra("patient") as? Patient
-        val numbder = 13
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_patient_view_profile)
@@ -35,26 +34,30 @@ class PatientViewProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        val nombrePaciente = findViewById<TextView>(R.id.tvNombre)
-        nombrePaciente.text = patient?.name + " " + patient?.lastname
-
-        val edadPaciente = findViewById<TextView>(R.id.tvFechaNacimiento)
-        edadPaciente.text = patient?.age.toString()
-
-
-
+        getPersonalInformation()
 
         //BtnLeerInfoPersonal
         val btnLeerInfoPersonal = findViewById<Button>(R.id.btLeerInfoPersonal)
 
         btnLeerInfoPersonal.setOnClickListener {
             val intent = Intent(this, PatientEditPersonalInformationActivity::class.java)
-            if(patient != null) {
-                intent.putExtra("patient", patient)
-            }
-            startActivityForResult(intent, REQUEST_CODE_UPDATE_PATIENT)
+            startActivity(intent)
         }
+
+        //BtnEdit
+        val btnEdit = findViewById<ImageButton>(R.id.ibEdit)
+        btnEdit.setOnClickListener {
+            val intent = Intent(this, PatientEditPersonalInformationActivity::class.java)
+            startActivity(intent)
+        }
+
+        //BtnHistorialMedico
+        val btnHistorialMedico = findViewById<Button>(R.id.btLeerHMedico)
+        btnHistorialMedico.setOnClickListener {
+            val intent = Intent(this, HistorialMedicoActivity::class.java)
+            startActivity(intent)
+        }
+
 
         //BotonBack
         val btnBack = findViewById<ImageButton>(R.id.ibBackWhite)
@@ -63,24 +66,57 @@ class PatientViewProfileActivity : AppCompatActivity() {
             val intent = Intent(this, PatientMenuActivity::class.java)
             startActivity(intent)
         }
+
+        //BtnActualizar
+        val btnActualizar = findViewById<ImageButton>(R.id.ibPerfil)
+        btnActualizar.setOnClickListener {
+            getPersonalInformation()
+        }
+
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_UPDATE_PATIENT && resultCode == RESULT_OK) {
-            val patientUpdated = data?.getSerializableExtra("patient") as? Patient
+    private fun getPersonalInformation() {
+        val tvNombre = findViewById<TextView>(R.id.tvNombre)
+        val tvApellido = findViewById<TextView>(R.id.tvApellido)
+        val tvFechaDeNacimiento = findViewById<TextView>(R.id.tvFecha)
+        val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
+        val ivFoto = findViewById<ImageView>(R.id.ivFoto)
 
-            if(patientUpdated != null) {
-                patient = patientUpdated
+        //Redireccionar a la vista de perfil
+        val intent = Intent(this, PatientViewProfileActivity::class.java)
+        startActivity(intent)
+        //Instancia de Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        //Instancia de nuestro service
+        val patientService : PatientService = retrofit.create(PatientService::class.java)
+
+        val request = patientService.getPersonalInformationToViewProfile("json")
+
+        request.enqueue(object : Callback<Patient> {
+            override fun onResponse(call: Call<Patient>, response: Response<Patient>) {
+                if (response.isSuccessful) {
+                    val patient = response.body()!!
+                    tvNombre.text = patient.name
+                    tvApellido.text = patient.lastname
+                    //Formateo de fecha
+                    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val formattedDate = dateFormat.format(patient.birthdate)
+                    tvFechaDeNacimiento.text = formattedDate
+                    tvTelefono.text = patient.phone
+                    //Mostrar Imagen
+                    Glide.with(this@PatientViewProfileActivity)
+                        .load(patient.photo)
+                        .into(ivFoto)
+                }
             }
 
-            val nombrePaciente = findViewById<TextView>(R.id.tvNombre)
-            nombrePaciente.text = patient?.name + " " + patient?.lastname
-
-            val edadPaciente = findViewById<TextView>(R.id.tvFechaNacimiento)
-            edadPaciente.text = patient?.age.toString()
-
-        }
+            override fun onFailure(call: Call<Patient>, t: Throwable) {
+                Log.e("Error", t.message.toString())
+            }
+        })
     }
 }

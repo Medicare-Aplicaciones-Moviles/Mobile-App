@@ -9,8 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.User.Doctor
-import com.caretech.careconnect.User.Patient
+import com.caretech.careconnect.models.Doctor
+import com.caretech.careconnect.models.Patient
 
 class PatientMenuActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -60,7 +60,7 @@ class PatientMenuActivity : AppCompatActivity() {
         val btSacarCita = findViewById<Button>(R.id.btSacarCita)
 
         btSacarCita.setOnClickListener{
-            val intent = Intent(this, CitaMenuActivity::class.java)
+            val intent = Intent(this, DoctorsCitaActivity::class.java)
             if (doctor != null) {
                 intent.putExtra("doctor", doctor as Doctor)
             }

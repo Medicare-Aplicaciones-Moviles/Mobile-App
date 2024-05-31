@@ -10,9 +10,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.Remote.RetrofitInstance
-import com.caretech.careconnect.User.Doctor
-import com.caretech.careconnect.User.Patient
+import com.caretech.careconnect.network.RetrofitInstance
+import com.caretech.careconnect.models.Doctor
+import com.caretech.careconnect.models.DoctorLogin
+import com.caretech.careconnect.models.Patient
+import com.caretech.careconnect.models.PatientLogin
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -66,7 +68,7 @@ class IngresarDatosLogin : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
                 if(opcion == "paciente"){
-                    val patient = Patient(
+                    val patient = PatientLogin(
                         id = 0,
                         name = "",
                         lastname = "",
@@ -96,7 +98,7 @@ class IngresarDatosLogin : AppCompatActivity() {
                     })
                 }
                 else if(opcion == "profesional"){
-                        val doctor = Doctor(
+                        val doctor = DoctorLogin(
                         id = 0,
                         name = "",
                         lastname = "",

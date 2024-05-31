@@ -1,4 +1,4 @@
-package com.caretech.careconnect.Historial
+package com.caretech.careconnect.models
 
 class Alergia (
 

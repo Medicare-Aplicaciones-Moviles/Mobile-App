@@ -6,7 +6,8 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.caretech.careconnect.Historial.Alergia
+import com.caretech.careconnect.models.Alergia
+import com.caretech.careconnect.adapter.AlergiaHistorialAdapter
 
 class HistorialMedicoResumenActivity : AppCompatActivity() {
 

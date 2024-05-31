@@ -1,4 +1,4 @@
-package com.caretech.careconnect
+package com.caretech.careconnect.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
-import com.caretech.careconnect.Historial.Alergia
+import com.caretech.careconnect.models.Alergia
+import com.caretech.careconnect.R
 
 class AlergiaHistorialAdapter(var alergias: ArrayList<Alergia>): Adapter<AlergiasPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlergiasPrototype {

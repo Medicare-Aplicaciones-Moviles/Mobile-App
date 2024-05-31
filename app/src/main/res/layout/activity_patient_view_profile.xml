@@ -225,29 +225,29 @@
 
     <TextView
         android:id="@+id/tvNombre"
-        android:layout_width="105dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/NombreEjemplo"
+        android:layout_width="129dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:textAlignment="viewStart"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ivPhotoPerfil"
+        app:layout_constraintStart_toEndOf="@+id/ivFoto"
         app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
-        tools:ignore="TextSizeCheck" />
+        tools:ignore="TextSizeCheck"
+        tools:text="Mario Mauricio" />
 
     <ImageView
         android:id="@+id/ivFecha"
         android:layout_width="25dp"
         android:layout_height="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="60dp"
         android:background="#2196F3"
         android:importantForAccessibility="no"
         android:outlineAmbientShadowColor="#03A9F4"
         android:outlineSpotShadowColor="#00BCD4"
-        app:layout_constraintEnd_toStartOf="@+id/tvFecha"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
+        app:layout_constraintStart_toEndOf="@+id/ivFoto"
+        app:layout_constraintTop_toTopOf="@+id/ivFoto"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         tools:ignore="ImageContrastCheck" />
 
@@ -255,32 +255,32 @@
         android:id="@+id/tvFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="115dp"
-        android:text="@string/fechaEjemplo"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/btInfoGeneralEnPerfil"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
-        tools:ignore="SmallSp" />
+        app:layout_constraintStart_toEndOf="@+id/ivFecha"
+        app:layout_constraintTop_toBottomOf="@+id/tvApellido"
+        tools:ignore="SmallSp"
+        tools:text="01/01/1984" />
 
     <TextView
-        android:id="@+id/tvFechaNacimiento"
+        android:id="@+id/tvTelefono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="122dp"
-        android:text="@string/numeroEjemplo"
         android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/btInfoGeneralEnPerfil"
+        app:layout_constraintStart_toEndOf="@+id/ivTelefono"
         app:layout_constraintTop_toBottomOf="@+id/tvFecha"
-        tools:ignore="SmallSp" />
+        tools:ignore="SmallSp"
+        tools:text="987 654 321" />
 
     <ImageButton
         android:id="@+id/ibEdit"
         android:layout_width="24dp"
         android:layout_height="34dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
         android:background="#03A9F4"
         android:importantForAccessibility="no"
         app:layout_constraintStart_toEndOf="@+id/tvNombre"
@@ -292,11 +292,11 @@
         android:id="@+id/ivTelefono"
         android:layout_width="26dp"
         android:layout_height="18dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
         android:background="#03A9F4"
         android:importantForAccessibility="no"
-        app:layout_constraintEnd_toStartOf="@+id/tvFechaNacimiento"
+        app:layout_constraintStart_toEndOf="@+id/ivFoto"
         app:layout_constraintTop_toBottomOf="@+id/ivFecha"
         app:srcCompat="@android:drawable/ic_menu_call"
         tools:ignore="ImageContrastCheck" />
@@ -390,13 +390,14 @@
     <Button
         android:id="@+id/btLeerInfoPersonal"
         android:layout_width="106dp"
-        android:layout_height="35dp"
+        android:layout_height="38dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="#03A9F4"
         android:text="@string/leerInfo"
         android:textColor="#4A148C"
         app:icon="@android:drawable/ic_menu_send"
+        app:iconPadding="4dp"
         app:layout_constraintStart_toEndOf="@+id/tvInfoPersonal"
         app:layout_constraintTop_toTopOf="@+id/btnInfoPersonalEnPerfil"
         tools:ignore="TouchTargetSizeCheck" />
@@ -460,20 +461,25 @@
         app:srcCompat="@drawable/flechaa_derecha"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="564dp" />
-
     <ImageView
-        android:id="@+id/ivPhotoPerfil"
+        android:id="@+id/ivFoto"
         android:layout_width="75dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/btInfoGeneralEnPerfil"
-        app:layout_constraintTop_toTopOf="@+id/btInfoGeneralEnPerfil"
-        app:srcCompat="@drawable/anciano__1_" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPaciente"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvApellido"
+        android:layout_width="129dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="8dp"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivFoto"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre"
+        tools:text="Jimenez Mendoza" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
