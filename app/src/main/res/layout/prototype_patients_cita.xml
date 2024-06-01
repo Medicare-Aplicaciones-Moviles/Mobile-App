@@ -42,11 +42,12 @@
             android:layout_width="132dp"
             android:layout_height="61dp"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="51dp"
             android:textAlignment="viewStart"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/ivPacienteFoto"
-            tools:layout_editor_absoluteY="51dp"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Valentina Laverde de la Rosa" />
 
         <TextView
