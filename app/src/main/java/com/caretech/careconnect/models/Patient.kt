@@ -1,44 +1,19 @@
-package com.caretech.careconnect.models
+package com.caretech.careconnect.User
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
-import java.time.LocalDate
 
 data class Patient(
     val id: Int,
-    val name: String?,
-    val lastname: String?,
-    val age: Int?,
-    val email: String?,
-    val password: String?,
-    val height: Double?,
-    val weight: Double?,
-    val body_mass_index: Double?,
-    val photo: String?,
-    val phone: String?,
-    val birthdate: LocalDate?,
-
+    val name: String,
+    val lastname: String,
+    val age: Int,
+    val email: String,
+    val password: String,
+    val height: Double,
+    val weight: Double,
+    val body_mass_index: Double,
+    @SerializedName("fecha_nacimiento") val fecha_nacimiento: String,
+    val telefono: String,
+    @SerializedName("profile_image") val profileImage: String
 ):Serializable
-
-
-data class PatientRequestInEditInformation(
-    val name: String?,
-    val lastname: String?,
-    val birthdate: String?,
-    val phone: String?,
-    val height: Double?,
-    val weight: Double?,
-    val body_mass_index: Double?,
-    val photo: String?
-)
-
-data class PatientLogin(
-    val id: Int,
-    val name: String?,
-    val lastname: String?,
-    val age: Int?,
-    val email: String?,
-    val password: String?,
-    val height: Double?,
-    val weight: Double?,
-    val body_mass_index: Double?,
-)

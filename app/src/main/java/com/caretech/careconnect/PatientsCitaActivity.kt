@@ -9,9 +9,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.caretech.careconnect.Remote.PatientService
+import com.caretech.careconnect.User.Patient
 import com.caretech.careconnect.adapter.PatientAdapter
-import com.caretech.careconnect.models.Patient
-import com.caretech.careconnect.network.PatientService
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,21 +53,7 @@ class PatientsCitaActivity : AppCompatActivity() {
         //Instancia de nuestro service
         val patientService: PatientService = retrofit.create(PatientService::class.java)
 
-        val request = patientService.searchPatient(nombrePaciente)
 
-        request.enqueue(object : Callback<List<Patient>> {
-            override fun onResponse(p0: Call<List<Patient>>, p1: Response<List<Patient>>) {
-                val rvPatients = findViewById<RecyclerView>(R.id.rvPatients)
-                patients = p1.body()!!
-                patientAdapter = PatientAdapter(patients)
-                rvPatients.adapter = patientAdapter
-                rvPatients.layoutManager = LinearLayoutManager(this@PatientsCitaActivity)
-            }
 
-            override fun onFailure(p0: Call<List<Patient>>, p1: Throwable) {
-                Log.e("Error", p1.message.toString())
-            }
-
-        })
     }
 }

@@ -2,40 +2,31 @@ package com.caretech.careconnect
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.caretech.careconnect.models.Patient
-import com.caretech.careconnect.models.PatientRequestInEditInformation
-import com.caretech.careconnect.network.PatientService
+import com.caretech.careconnect.Remote.RetrofitInstance
+import com.caretech.careconnect.User.Patient
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
+import java.io.Serializable
 
 class PatientEditPersonalInformationActivity : AppCompatActivity() {
-    private val PICK_IMAGE_REQUEST = 1
-    private val CAMERA_REQUEST = 2
-    private var isEditable = false
-    private var selectedImageUri: Uri? = null
-    @SuppressLint("MissingInflatedId", "CutPasteId")
+
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
+        val patient = intent.getSerializableExtra("patient") as? Patient
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_patient_edit_personal_information)
@@ -45,17 +36,28 @@ class PatientEditPersonalInformationActivity : AppCompatActivity() {
             insets
         }
 
-        // Botón para seleccionar imagen desde la galería
-        val ibFotoEdit = findViewById<ImageButton>(R.id.ibFotoEdit)
-        ibFotoEdit.setOnClickListener {
-            showImagePickerDialog()
-        }
+        val nombrePaciente = findViewById<TextView>(R.id.tvNombre)
+        nombrePaciente.text = patient?.name + " " + patient?.lastname
 
-        // Botón para alternar la edición
-        val ibToggleEdit = findViewById<ImageButton>(R.id.ibEdit)
-        ibToggleEdit.setOnClickListener {
-            toggleEditMode()
-        }
+        val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
+        tvTelefono.text = patient?.telefono
+
+        val tvFecha = findViewById<TextView>(R.id.tvFecha)
+        tvFecha.text = patient?.fecha_nacimiento
+
+        val height = findViewById<TextInputEditText>(R.id.tietAltura)
+        height.setText(patient?.height.toString())
+
+        val bodyMass = findViewById<TextInputEditText>(R.id.tietMasaCorporal)
+        bodyMass.setText(patient?.body_mass_index.toString())
+
+        val weight = findViewById<TextInputEditText>(R.id.tietPeso)
+        weight.setText(patient?.weight.toString())
+
+        val ivFotoPerfil = findViewById<ImageView>(R.id.ibPerfil)
+        Glide.with(this)
+            .load(patient?.profileImage)
+            .into(ivFotoPerfil)
 
         //BotonBack
         val btnBack = findViewById<ImageButton>(R.id.ibBackWhite)
@@ -65,149 +67,49 @@ class PatientEditPersonalInformationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //BotonActualizar
         val btnActualizar = findViewById<Button>(R.id.btActualizar)
-
-        btnActualizar.setOnClickListener {
-            val etNombre = findViewById<EditText>(R.id.etNombre)
-            val etApellido = findViewById<EditText>(R.id.etApellido)
-            val etFechaNacimiento = findViewById<EditText>(R.id.etDate)
-            val etTelefono = findViewById<EditText>(R.id.etTelefono)
-            val etAltura = findViewById<TextInputEditText>(R.id.etAltura)
-            val etPeso = findViewById<TextInputEditText>(R.id.etPeso)
-            val etMasa = findViewById<TextInputEditText>(R.id.etMasaCorporal)
-            val ibFoto = findViewById<ImageButton>(R.id.ibFotoEdit)
-
-            // Procesa la imagen
-            val foto: String? = selectedImageUri?.let { uri ->
-                // Convierte la URI a una cadena base64 o gestiona la imagen según tus necesidades
-                contentResolver.openInputStream(uri)?.buffered()?.use { it.readBytes() }?.let { bytes ->
-                    android.util.Base64.encodeToString(bytes, android.util.Base64.DEFAULT)
+        btnActualizar.setOnClickListener{
+            val intent = Intent(this, PatientViewProfileActivity::class.java)
+            if(height.text.toString().isNotEmpty() && bodyMass.text.toString().isNotEmpty() && weight.text.toString().isNotEmpty()){
+                val patientActualizado = patient?.let { it1 ->
+                    Patient(
+                        id = it1.id,
+                        name = it1.name,
+                        lastname = it1.lastname,
+                        age = it1.age,
+                        email = it1.email,
+                        password = it1.password,
+                        height = height.text.toString().toDouble(),
+                        weight = weight.text.toString().toDouble(),
+                        body_mass_index = bodyMass.text.toString().toDouble(),
+                        fecha_nacimiento = it1.fecha_nacimiento,
+                        telefono = it1.telefono,
+                        profileImage = it1.profileImage
+                    )
                 }
-            }
 
-            val patient = PatientRequestInEditInformation(
-                name = etNombre?.text.toString(),
-                lastname = etApellido?.text.toString(),
-                birthdate = etFechaNacimiento?.text.toString(),
-                phone = etTelefono?.text.toString(),
-                height = etAltura.text.toString().toDoubleOrNull(),
-                weight = etPeso.text.toString().toDoubleOrNull(),
-                body_mass_index = etMasa.text.toString().toDoubleOrNull(),
-                photo = foto ?: ""
-            )
+                RetrofitInstance.ApiPatient.updatePatient(patientActualizado!!).enqueue(object : retrofit2.Callback<Patient> {
+                    override fun onResponse(call: Call<Patient>, response: Response<Patient>) {
+                        if(response.isSuccessful){
+                            val updatedPatient = response.body()
+                            Toast.makeText(this@PatientEditPersonalInformationActivity, "Datos actualizados", Toast.LENGTH_SHORT).show()
 
-            //Instancia de Retrofit
-            val retrofit = Retrofit.Builder()
-                .baseUrl("https://")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+                            val resultIntent = Intent()
+                            resultIntent.putExtra("patient", updatedPatient as Serializable)
+                            setResult(RESULT_OK, resultIntent)
+                            finish()
+                        }
+                        else{
+                            Toast.makeText(this@PatientEditPersonalInformationActivity, "Error al actualizar los datos", Toast.LENGTH_SHORT).show()
 
-            //Instancia del service
-            val patientService : PatientService = retrofit.create(PatientService::class.java)
-
-            val requestUpdate = patientService.updatePersonalInformation(patient)
-
-            requestUpdate.enqueue(object : Callback<Patient> {
-                override fun onResponse(call: Call<Patient>, response: Response<Patient>) {
-                    if (response.isSuccessful) {
-                        val patient = response.body()!!
-                        etNombre.setText(patient.name)
-                        etApellido.setText(patient.lastname)
-                        etFechaNacimiento.setText(patient.birthdate.toString())
-                        etTelefono.setText(patient.phone)
-                        etAltura.setText(patient.height.toString())
-                        etPeso.setText(patient.weight.toString())
-                        etMasa.setText(patient.body_mass_index.toString())
-                        ibFoto.setImageURI(Uri.parse(patient.photo))
-                        //MostrarImagen
-                        Glide.with(this@PatientEditPersonalInformationActivity)
-                            .load(patient.photo)
-                            .into(ibFoto)
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<Patient>, t: Throwable) {
-                    Log.e("Error", t.message.toString())
-                }
-            })
-        }
-        setEditMode(false)
-    }
-
-    private fun showImagePickerDialog() {
-        val options = arrayOf("Elegir de la galería", "Tomar foto")
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Seleccionar imagen")
-        builder.setItems(options) { dialog, which ->
-            when (which) {
-                0 -> openGallery()
-                1 -> openCamera()
-            }
-        }
-        builder.show()
-    }
-
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, PICK_IMAGE_REQUEST)
-    }
-
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(intent, CAMERA_REQUEST)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        //FotoEdit
-        val ibFotoEdit = findViewById<ImageButton>(R.id.ibFotoEdit)
-        if (resultCode == RESULT_OK) {
-            when (requestCode) {
-                PICK_IMAGE_REQUEST -> {
-                    val selectedImageUri: Uri? = data?.data
-                    ibFotoEdit.setImageURI(selectedImageUri)
-                }
-                CAMERA_REQUEST -> {
-                    val photo: Bitmap? = data?.extras?.get("data") as? Bitmap
-                    ibFotoEdit.setImageBitmap(photo)
-                }
+                    override fun onFailure(call: Call<Patient>, t: Throwable) {
+                        Toast.makeText(this@PatientEditPersonalInformationActivity, "Error al actualizar los datos", Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
         }
     }
-
-    private fun toggleEditMode() {
-        isEditable = !isEditable
-        setEditMode(isEditable)
-    }
-
-    private fun setEditMode(editable: Boolean) {
-        val etNombre = findViewById<EditText>(R.id.etNombre)
-        val etApellido = findViewById<EditText>(R.id.etApellido)
-        val etDate = findViewById<EditText>(R.id.etDate)
-        val etTelefono = findViewById<EditText>(R.id.etTelefono)
-        val ibFotoEdit = findViewById<ImageButton>(R.id.ibFotoEdit)
-        val etAltura = findViewById<TextInputEditText>(R.id.etAltura)
-        val etPeso = findViewById<TextInputEditText>(R.id.etPeso)
-        val etMasa = findViewById<TextInputEditText>(R.id.etMasaCorporal)
-        val ivFecha = findViewById<ImageView>(R.id.ivFecha)
-        val ivTelefono = findViewById<ImageView>(R.id.ivTelefono)
-        val ibToggleEdit = findViewById<ImageButton>(R.id.ibEdit)
-        val color = if (editable) R.color.plomo else R.color.celeste
-
-        etNombre.isEnabled = editable
-        etApellido.isEnabled = editable
-        etDate.isEnabled = editable
-        etTelefono.isEnabled = editable
-        ibFotoEdit.isEnabled = editable
-        etAltura.isEnabled = editable
-        etPeso.isEnabled = editable
-        etMasa.isEnabled = editable
-
-
-        ibToggleEdit.setBackgroundColor(ContextCompat.getColor(this, color))
-        ivFecha.setBackgroundColor(ContextCompat.getColor(this, color))
-        ivTelefono.setBackgroundColor(ContextCompat.getColor(this, color))
-    }
-
 }

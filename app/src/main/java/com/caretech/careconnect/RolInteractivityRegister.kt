@@ -34,6 +34,7 @@ class RolInteractivityRegister : AppCompatActivity() {
 
         btnProfesional.setOnClickListener {
             val intent = Intent(this, IngresarDatosRegistro::class.java)
+            intent.putExtra("opcion", "profesional")
             startActivity(intent)
         }
 
@@ -42,6 +43,7 @@ class RolInteractivityRegister : AppCompatActivity() {
 
         btnPaciente.setOnClickListener {
             val intent = Intent(this, IngresarDatosRegistro::class.java)
+            intent.putExtra("opcion", "paciente")
             startActivity(intent)
         }
 

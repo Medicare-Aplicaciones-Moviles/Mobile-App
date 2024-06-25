@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.models.Patient
+import com.bumptech.glide.Glide
+import com.caretech.careconnect.User.Patient
 
 class HistorialMedicoActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -30,12 +32,19 @@ class HistorialMedicoActivity : AppCompatActivity() {
         nombrePaciente.text = patient?.name + " " + patient?.lastname
 
         val edadPaciente = findViewById<TextView>(R.id.tvEdad)
-        edadPaciente.text = patient?.age.toString()
+        edadPaciente.text = patient?.fecha_nacimiento + ' ' + patient?.age.toString()
+
+        val ivFotoPerfil = findViewById<ImageView>(R.id.ivFotoPerfil)
+        Glide.with(this)
+            .load(patient?.profileImage)
+            .into(ivFotoPerfil)
+
 
         val btAdjuntar = findViewById<Button>(R.id.btAdjuntar)
 
         btAdjuntar.setOnClickListener{
             val intent = Intent(this, HistorialMedicoResumenActivity::class.java)
+            intent.putExtra("patient", patient)
             startActivity(intent)
         }
 

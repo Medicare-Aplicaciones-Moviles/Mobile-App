@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.caretech.careconnect.R
-import com.caretech.careconnect.models.Patient
+import com.caretech.careconnect.User.Patient
 
 class PatientAdapter(val patients: List<Patient>) : Adapter<PatientPrototype>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PatientPrototype {
@@ -41,10 +41,6 @@ class PatientPrototype(itemView: View) : ViewHolder(itemView) {
     fun bind(patient : Patient){
         tvNombrePaciente.text = patient.name + " " + patient.lastname
         tvEdadPaciente.text = patient.age.toString()
-        //Mostrar la imagen del paciente
-        Glide.with(itemView)
-            .load(patient.photo)
-            .into(ivPacienteFoto)
     }
 
 }

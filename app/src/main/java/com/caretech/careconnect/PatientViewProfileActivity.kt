@@ -13,8 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
-import com.caretech.careconnect.models.Patient
-import com.caretech.careconnect.network.PatientService
+import com.caretech.careconnect.Remote.PatientService
+import com.caretech.careconnect.User.Doctor
+import com.caretech.careconnect.User.Patient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +25,9 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class PatientViewProfileActivity : AppCompatActivity() {
+
+    private var patient: Patient? = null
+    private var doctor: Doctor? = null
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,15 +38,50 @@ class PatientViewProfileActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        getPersonalInformation()
+
+        patient = intent.getSerializableExtra("patient") as? Patient
+        doctor = intent.getSerializableExtra("doctor") as? Doctor
+
+        val tvFecha = findViewById<TextView>(R.id.tvFecha)
+        val tvNombre = findViewById<TextView>(R.id.tvNombre)
+        val tvApellido = findViewById<TextView>(R.id.tvApellido)
+        val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
+        val ivFoto = findViewById<ImageView>(R.id.ivFoto)
+
+        if(patient == null) {
+            tvNombre.text = doctor?.name
+            tvApellido.text = doctor?.lastname
+            tvFecha.text = doctor?.puntuation
+            tvTelefono.text = doctor?.costo
+            Glide.with(this)
+                .load(patient?.profileImage)
+                .into(ivFoto)
+
+        }
+        else{
+            tvNombre.text = patient?.name
+            tvApellido.text = patient?.lastname
+            tvFecha.text = patient?.fecha_nacimiento
+            tvTelefono.text = patient?.telefono
+            Glide.with(this)
+                .load(patient?.profileImage)
+                .into(ivFoto)
+        }
+
+
+
+
 
         //BtnLeerInfoPersonal
         val btnLeerInfoPersonal = findViewById<Button>(R.id.btLeerInfoPersonal)
 
         btnLeerInfoPersonal.setOnClickListener {
             val intent = Intent(this, PatientEditPersonalInformationActivity::class.java)
-            startActivity(intent)
+            intent.putExtra("patient", patient)
+            startActivityForResult(intent, EDIT_PERSONAL_INFO_REQUEST_CODE)
         }
+
+
 
         //BtnEdit
         val btnEdit = findViewById<ImageButton>(R.id.ibEdit)
@@ -70,53 +109,47 @@ class PatientViewProfileActivity : AppCompatActivity() {
         //BtnActualizar
         val btnActualizar = findViewById<ImageButton>(R.id.ibPerfil)
         btnActualizar.setOnClickListener {
-            getPersonalInformation()
+        }
+
+        val btnCerrarSesionEnPerfil = findViewById<Button>(R.id.btnCerrarSesionEnPerfil)
+        btnCerrarSesionEnPerfil.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val ibInicio = findViewById<ImageButton>(R.id.ibInicio)
+        ibInicio.setOnClickListener {
+            val intent = Intent(this, PatientMenuActivity::class.java)
+            intent.putExtra("patient", patient)
+            startActivity(intent)
         }
 
     }
 
-    private fun getPersonalInformation() {
-        val tvNombre = findViewById<TextView>(R.id.tvNombre)
-        val tvApellido = findViewById<TextView>(R.id.tvApellido)
-        val tvFechaDeNacimiento = findViewById<TextView>(R.id.tvFecha)
-        val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
-        val ivFoto = findViewById<ImageView>(R.id.ivFoto)
+    companion object {
+        private const val EDIT_PERSONAL_INFO_REQUEST_CODE = 1
+    }
 
-        //Redireccionar a la vista de perfil
-        val intent = Intent(this, PatientViewProfileActivity::class.java)
-        startActivity(intent)
-        //Instancia de Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == EDIT_PERSONAL_INFO_REQUEST_CODE && resultCode == RESULT_OK) {
+            val updatedPatient = data?.getSerializableExtra("patient") as? Patient
+            if (updatedPatient != null) {
+                patient = updatedPatient
+                val tvNombre = findViewById<TextView>(R.id.tvNombre)
+                val tvApellido = findViewById<TextView>(R.id.tvApellido)
+                val tvFecha = findViewById<TextView>(R.id.tvFecha)
+                val tvTelefono = findViewById<TextView>(R.id.tvTelefono)
+                val ivFoto = findViewById<ImageView>(R.id.ivFoto)
 
-        //Instancia de nuestro service
-        val patientService : PatientService = retrofit.create(PatientService::class.java)
-
-        val request = patientService.getPersonalInformationToViewProfile("json")
-
-        request.enqueue(object : Callback<Patient> {
-            override fun onResponse(call: Call<Patient>, response: Response<Patient>) {
-                if (response.isSuccessful) {
-                    val patient = response.body()!!
-                    tvNombre.text = patient.name
-                    tvApellido.text = patient.lastname
-                    //Formateo de fecha
-                    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    val formattedDate = dateFormat.format(patient.birthdate)
-                    tvFechaDeNacimiento.text = formattedDate
-                    tvTelefono.text = patient.phone
-                    //Mostrar Imagen
-                    Glide.with(this@PatientViewProfileActivity)
-                        .load(patient.photo)
-                        .into(ivFoto)
-                }
+                tvNombre.text = updatedPatient.name
+                tvApellido.text = updatedPatient.lastname
+                tvFecha.text = updatedPatient.fecha_nacimiento
+                tvTelefono.text = updatedPatient.telefono
+                Glide.with(this)
+                    .load(updatedPatient.profileImage)
+                    .into(ivFoto)
             }
-
-            override fun onFailure(call: Call<Patient>, t: Throwable) {
-                Log.e("Error", t.message.toString())
-            }
-        })
+        }
     }
 }

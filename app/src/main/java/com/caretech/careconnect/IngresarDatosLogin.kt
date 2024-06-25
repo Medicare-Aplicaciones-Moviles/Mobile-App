@@ -10,11 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.network.RetrofitInstance
-import com.caretech.careconnect.models.Doctor
-import com.caretech.careconnect.models.DoctorLogin
-import com.caretech.careconnect.models.Patient
-import com.caretech.careconnect.models.PatientLogin
+import com.caretech.careconnect.Remote.RetrofitInstance
+import com.caretech.careconnect.User.Doctor
+import com.caretech.careconnect.User.Patient
 import com.google.android.material.textfield.TextInputEditText
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,7 +66,7 @@ class IngresarDatosLogin : AppCompatActivity() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
                 if(opcion == "paciente"){
-                    val patient = PatientLogin(
+                    val patient = Patient(
                         id = 0,
                         name = "",
                         lastname = "",
@@ -77,7 +75,10 @@ class IngresarDatosLogin : AppCompatActivity() {
                         password = password,
                         height = 0.0,
                         weight = 0.0,
-                        body_mass_index = 0.0
+                        body_mass_index = 0.0,
+                        fecha_nacimiento = "",
+                        telefono = "",
+                        profileImage = ""
                     )
 
                     RetrofitInstance.ApiPatient.loginPatient(patient).enqueue(object : Callback<Patient> {
@@ -98,7 +99,7 @@ class IngresarDatosLogin : AppCompatActivity() {
                     })
                 }
                 else if(opcion == "profesional"){
-                        val doctor = DoctorLogin(
+                    val doctor = Doctor(
                         id = 0,
                         name = "",
                         lastname = "",
@@ -107,7 +108,10 @@ class IngresarDatosLogin : AppCompatActivity() {
                         password = password,
                         height = 0.0,
                         weight = 0.0,
-                        bodyMassIndex = 0.0
+                        bodyMassIndex = 0.0,
+                        profileImage = "",
+                        puntuation = "",
+                        costo = ""
                     )
 
                     RetrofitInstance.ApiDoctor.loginDoctor(doctor).enqueue(object : Callback<Doctor> {
@@ -129,7 +133,6 @@ class IngresarDatosLogin : AppCompatActivity() {
                 }
 
             } else {
-                // Mostrar un mensaje de error si los campos están vacíos
                 Toast.makeText(this, "Por favor, ingrese el email y la contraseña", Toast.LENGTH_LONG).show()
             }
         }

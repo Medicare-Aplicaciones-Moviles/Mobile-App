@@ -9,8 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.caretech.careconnect.models.Doctor
-import com.caretech.careconnect.models.Patient
+import com.caretech.careconnect.User.Doctor
+import com.caretech.careconnect.User.Patient
 
 class PatientMenuActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
